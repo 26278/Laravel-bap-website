@@ -35,7 +35,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+          [
+              'specie' => 'required | min:3',
+              'length' => 'required | numeric | gt:0',
+              'description' => 'required | min:10',
+              'pub_date' => 'required | after_or_equal:today'
+          ]
+        );
     }
 
     /**
